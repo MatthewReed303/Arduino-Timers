@@ -1,0 +1,38 @@
+
+#######################################
+# Syntax Coloring Map For Timer
+#######################################
+
+#######################################
+# Datatypes and Class (KEYWORD1)
+#######################################
+
+Time	KEYWORD1
+EN	KEYWORD1
+RES	KEYWORD1
+DN	KEYWORD1
+TT	KEYWORD1
+IN	KEYWORD1
+BASE	KEYWORD1
+ET	KEYWORD1
+PT	KEYWORD1
+PT_ON	KEYWORD1
+PT_OFF	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+TON	KEYWORD2
+TOF	KEYWORD2
+TP	KEYWORD2
+FLASHER	KEYWORD2
+DEBOUNCE	KEYWORD2
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+#######################################
+# Constants (LITERAL1)
+#######################################
