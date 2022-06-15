@@ -2,7 +2,7 @@
 <br/>
 
 ## Timer Options
-***
+
 TON      = Time On Delay  
 TOF      = Time Off Delay  
 TP       = Pulse Timer  
@@ -11,7 +11,7 @@ DEBOUNCE = Debounce Timer
 
 ---
 
-## Timer Description
+### Timer Description
 
 #### TON Timer
 ---
