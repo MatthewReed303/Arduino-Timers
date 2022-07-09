@@ -32,7 +32,7 @@ void loop()
   //Function Parameters: 1=Enable(EN), 2=RESET(RES), 3=PRESET TIME(PT), 4=Time BASE 5=TIMER DONE(DN), 6=TIMING ACTIVE BIT(TT), 7=TIMER ELAPSED TIME(ET)
   Timer1.TON(Timer1.EN, Timer1.RES, Timer1.PT = 3, Timer1.BASE = "Seconds", Timer1.DN, Timer1.TT, Timer1.ET); //Timer Type can be Changed Timer1.TON or Timer1.TOF or Timer1.TP
   //Function Parameters: 1=Enable(EN), 2=RESET(RES), 3=PRESET TIME ON(PT_ON), 4=PRESET TIME OFF(PT_OFF), 5=Time BASE, 6=TIMER DONE(DN)
-  Timer2.FLASHER(Timer2.EN, Timer2.RES, Timer2.PT_ON = 350, Timer2.PT_OFF = 250, Timer2.BASE = "Miliseconds", Timer2.DN); //FLASHER Format
+  Timer2.FLASHER(Timer2.EN, Timer2.RES, Timer2.PT_ON = 350, Timer2.PT_OFF = 250, Timer2.BASE = "Milliseconds", Timer2.DN); //FLASHER Format
   
   //Read Inputs with debounce to prevent false trigger
   bool IO0 = DB1.DEBOUNCE(digitalRead(8));

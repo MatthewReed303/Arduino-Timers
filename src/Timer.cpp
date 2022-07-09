@@ -7,7 +7,7 @@ unsigned long FormatValue;
     if (Format == "Microseconds"){
         FormatValue = 1;
     }
-    else if (Format == "Miliseconds"){
+    else if (Format == "Milliseconds"){
         FormatValue = 1000;
     }
     else if (Format == "Seconds"){ 
