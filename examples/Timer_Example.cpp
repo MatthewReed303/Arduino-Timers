@@ -3,12 +3,17 @@
 
 //Call the Class and Assign Object for Timer
 Time Timer1; 
-Time Timer2; 
+Time Timer2;
+Time Timer3; 
 //Call the Class and Assign Object for Debounce
 Time DB1; 
 Time DB2; 
 Time DB3; 
 Time DB4; 
+
+//Analog Parameters
+const int AI_01_Pin = 14; //Analog Input 1 is connected to GPIO 14 (Analog CH0) 
+int AI_01_Value = 0;      //Analog Reading
 
 void setup()
   
@@ -30,10 +35,12 @@ void loop()
 {
   
   //Call the Timer Type Function in the Class and Return Timer Results 
-  //Function Parameters: 1=Enable(EN), 2=RESET(RES), 3=PRESET TIME(PT), 4=Time BASE 5=TIMER DONE(DN), 6=TIMING ACTIVE BIT(TT), 7=TIMER ELAPSED TIME(ET)
+  //Function Parameters TON/TOF/TP: 1=Enable(EN), 2=RESET(RES), 3=PRESET TIME(PT), 4=Time BASE 5=TIMER DONE(DN), 6=TIMING ACTIVE BIT(TT), 7=TIMER ELAPSED TIME(ET)
+  //Function Parameters Flasher: 1=Enable(EN), 2=RESET(RES), 3=PRESET TIME ON(PT_ON), 4=PRESET TIME OFF(PT_OFF), 5=Time BASE, 6=TIMER DONE(DN)
+
   Timer1.TON(Timer1.EN, Timer1.RES, Timer1.PT = 3, Timer1.BASE = "Seconds", Timer1.DN, Timer1.TT, Timer1.ET); //Timer Type can be Changed Timer1.TON or Timer1.TOF or Timer1.TP
-  //Function Parameters: 1=Enable(EN), 2=RESET(RES), 3=PRESET TIME ON(PT_ON), 4=PRESET TIME OFF(PT_OFF), 5=Time BASE, 6=TIMER DONE(DN)
   Timer2.FLASHER(Timer2.EN, Timer2.RES, Timer2.PT_ON = 350, Timer2.PT_OFF = 250, Timer2.BASE = "Milliseconds", Timer2.DN); //FLASHER Format
+  Timer3.TON(Timer3.EN, Timer3.RES, Timer3.PT = 1000, Timer3.BASE = "Milliseconds", Timer3.DN, Timer3.TT, Timer3.ET); //Timer 3 for non blocking delay
   
   //Read Inputs with debounce to prevent false trigger
   bool IO0 = DB1.DEBOUNCE(digitalRead(8));
@@ -92,6 +99,18 @@ void loop()
   }
   else {
     Timer2.RES = 0;
+  }
+
+  //Example of using non blocking delay ( Take analog reading every 1000ms )
+  if (!Timer3.DN) {
+    Timer3.EN = 1; //Enable Timer
+  }
+  else {
+    //Read Analog value and Print to serial monitor
+    AI_01_Value = analogRead(AI_01_Pin);
+    Serial.print("Analog Input 1 Value:  ");
+    Serial.println(AI_01_Value);
+    Timer3.EN = 0; //Disable Timer to restart cycle 
   }
 
 
